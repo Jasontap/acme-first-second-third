@@ -1,12 +1,48 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
 div {
   display: flex;
   justify-content: space-around;
 }
 
-div > div {
+.hlbox {
+  border-color: lightgrey;
+  border-radius: 5px;
+  height: 60px;
+  font-weight: bold;
+}
+.outerboxes {
   border: 1px solid red;
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  padding: 1.5rem;
   flex: auto;
+  justify-content: flex-start;
+}
+
+#first button:nth-child(2) {
+  background-color: red;
+}
+
+#second button {
+  background-color: red;
+}
+
+#third button:first-child {
+  background-color: red;
+}
+
+#testborder {
+  border: 1px solid;
+  height: 60px;
+  font-weight: bold;
+  background-color: white;
 }
