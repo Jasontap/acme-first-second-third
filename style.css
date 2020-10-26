@@ -12,12 +12,18 @@ div {
   justify-content: space-around;
 }
 
-.hlbox {
+.arrow {
   border-color: lightgrey;
   border-radius: 5px;
   height: 60px;
   font-weight: bold;
 }
+
+.hot {
+  background-color: red;
+  border: 1px solid grey;
+}
+
 .outerboxes {
   border: 1px solid red;
   display: flex;
@@ -40,9 +46,18 @@ div {
   background-color: red;
 }
 
-#testborder {
-  border: 1px solid;
-  height: 60px;
-  font-weight: bold;
-  background-color: white;
+#moe {
+  order: 4;
+}
+
+#larry {
+  order: 5;
+}
+
+#curly {
+  order: 6;
+}
+
+#lucy {
+  order: 7;
 }
