@@ -5,6 +5,11 @@
 h1 {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
+}
+
+h2 {
+  margin-bottom: 35px;
 }
 
 div {
@@ -13,37 +18,45 @@ div {
 }
 
 .arrow {
-  border-color: lightgrey;
-  border-radius: 5px;
-  height: 60px;
+  height: 50px;
   font-weight: bold;
+  border: 0.5pt solid lightgrey;
+  margin: 0.4px;
 }
 
 .hot {
-  background-color: red;
-  border: 1px solid grey;
+  background-color: orangered;
 }
 
 .outerboxes {
-  border: 1px solid red;
+  border: 1px solid orangered;
   display: flex;
   flex-direction: column;
   margin: 2rem;
-  padding: 1.5rem;
-  flex: auto;
+  padding: 1rem 1rem 2rem 1rem;
+  flex: 1;
   justify-content: flex-start;
 }
 
 #first button:nth-child(2) {
-  background-color: red;
+  background-color: orangered;
 }
 
 #second button {
-  background-color: red;
+  background-color: orangered;
 }
 
 #third button:first-child {
-  background-color: red;
+  background-color: orangered;
+}
+
+.selection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 15px;
+  height: 50px;
+  margin: 0.7px;
 }
 
 #moe {

@@ -9,16 +9,14 @@ const users = [
   { id: 4, name: 'lucy', slot: 'third', selected: true }
 ];
 
-// const moe = document.createTextNode('moe');
-// const larry = document.createTextNode('larry');
-// const curly = document.createTextNode('curly');
-// const lucy = document.createTextNode('lucy');
 
 const lists = document.querySelector('#lists');
-lists.addEventListener('click', selectOrSwitch);
+lists.addEventListener('click', selectOrShift);
 
-const firstSlot = document.querySelector('#first');
+// const firstSlot = document.querySelector('#first');
 
+
+// creates a div element for each user.
 function createUserElement () {
   for(let i = 0; i < users.length; i++) {
     users[i].dom = document.createElement('div');
@@ -26,21 +24,29 @@ function createUserElement () {
     users[i].dom.appendChild(name);
     users[i].dom.id = users[i].name;
     users[i].dom.className = 'selection';
-    firstSlot.appendChild(users[i].dom);
+    const slot = document.querySelector(`#${users[i].slot}`);
+    slot.appendChild(users[i].dom);
+    if(users[i].selected) {
+      users[i].dom.className = 'selection hot';
+    }
   }
 }
 
 createUserElement();
 
-function selectOrSwitch (event) {
+
+// determines if the event is from a user selection or an arrow button
+function selectOrShift (event) {
   if(event.target.className.includes('selection')) {
-    return selectName(event);
+    return selectUser(event);
   }
 
-  return moveListItem(event);
+  return shiftUser(event);
 }
 
-function selectName (event) {
+
+//function applied when a user is selected - updates selected item's class for highlighting
+function selectUser (event) {
   const name = event.target.id;
   for(let i = 0; i < users.length; i++) {
     if(name === users[i].name) {
@@ -56,31 +62,30 @@ function selectName (event) {
 }
 
 
-function moveListItem(event) {
-  const sourceParent = event.target.parentElement.id;
-  const source = event.target.className;
-  console.log(source.includes('move-rt'));
+// Moves the selected users right/left based on where they are, and where the command was initiated
+function shiftUser(event) {
+
+  const srcParent = event.target.parentElement.id;
+  const srcClass = event.target.className;
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].selected && users[i].slot === srcParent) {
+      if(srcClass.includes('move-rt') && srcParent.includes('first')){
+        const slot = document.querySelector(`#second`);
+        slot.appendChild(users[i].dom);
+        users[i].slot = 'second';
+      } else if (srcClass.includes('move-lft') && srcParent.includes('third')) {
+        const slot = document.querySelector(`#second`);
+        slot.appendChild(users[i].dom);
+        users[i].slot = 'second';
+      } else if (srcClass.includes('move-rt') && srcParent.includes('second')) {
+        const slot = document.querySelector(`#third`);
+        slot.appendChild(users[i].dom);
+        users[i].slot = 'third';
+      } else if (srcClass.includes('move-lft') && srcParent.includes('second')) {
+        const slot = document.querySelector(`#first`);
+        slot.appendChild(users[i].dom);
+        users[i].slot = 'first';
+      }
+    }
+  }
 }
-// const lists = document.querySelector('#lists');
-
-// const secondSlot = document.querySelector('#second');
-// const thirdSlot = document.querySelector('#third');
-// const selection = document.createElement('div');
-
-// lists.addEventListener('click', moveListItem);
-
-
-// function moveListItem(event) {
-//   if(event.target.className.includes('right')) {
-//     if(event.target.parentElement.id === 'first') {
-//       let user = users[0].name;
-//       selection.innerHTML = user;
-//       selection.id = user;
-//       // selection.style.backgroundColor = 'white';
-//       // selection.style.border = 'none';
-//       selection.className = 'user-born'
-//       selection.addEventListener('click', )
-//       secondSlot.appendChild(selection);
-//     }
-//   }
-// }
